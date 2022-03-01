@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/NoSQL/src-gen" creationIcons="false" editDirectory="/NoSQL.edit/src-gen"
+    editorDirectory="/NoSQL.editor/src-gen" modelPluginID="NoSQL" modelName="NoSQLgraph"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>NoSQLgraph.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="NoSQLgraph" basePackage="nosql" disposableProviderFactory="true"
+      ecorePackage="NoSQLgraph.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="NoSQLgraph.ecore#//DataType">
+      <genEnumLiterals ecoreEnumLiteral="NoSQLgraph.ecore#//DataType/Int"/>
+      <genEnumLiterals ecoreEnumLiteral="NoSQLgraph.ecore#//DataType/Double"/>
+      <genEnumLiterals ecoreEnumLiteral="NoSQLgraph.ecore#//DataType/Bool"/>
+      <genEnumLiterals ecoreEnumLiteral="NoSQLgraph.ecore#//DataType/Char"/>
+      <genEnumLiterals ecoreEnumLiteral="NoSQLgraph.ecore#//DataType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="NoSQLgraph.ecore#//DataType/Date"/>
+      <genEnumLiterals ecoreEnumLiteral="NoSQLgraph.ecore#//DataType/Array"/>
+      <genEnumLiterals ecoreEnumLiteral="NoSQLgraph.ecore#//DataType/Enum"/>
+    </genEnums>
+    <genClasses ecoreClass="NoSQLgraph.ecore#//Database">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NoSQLgraph.ecore#//Database/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NoSQLgraph.ecore#//Database/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="NoSQLgraph.ecore#//Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NoSQLgraph.ecore#//Element/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NoSQLgraph.ecore#//Element/fields"/>
+    </genClasses>
+    <genClasses ecoreClass="NoSQLgraph.ecore#//Node"/>
+    <genClasses ecoreClass="NoSQLgraph.ecore#//Relationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NoSQLgraph.ecore#//Relationship/to"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NoSQLgraph.ecore#//Relationship/from"/>
+    </genClasses>
+    <genClasses ecoreClass="NoSQLgraph.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NoSQLgraph.ecore#//Field/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NoSQLgraph.ecore#//Field/isRequired"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NoSQLgraph.ecore#//Field/isIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NoSQLgraph.ecore#//Field/dataType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NoSQLgraph.ecore#//Field/element"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
