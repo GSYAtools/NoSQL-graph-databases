@@ -16,10 +16,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Role"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//Role"/>
+        eType="#//Role" eOpposite="#//Role/root"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//Role" eOpposite="#//Role/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rules" upperBound="-1"
-        eType="#//SecurityRule"/>
+        eType="#//SecurityRule" eOpposite="#//SecurityRule/roles"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="User">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -33,7 +33,7 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sign" lowerBound="1" eType="#//SignType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" lowerBound="1" upperBound="-1"
-        eType="#//Role"/>
+        eType="#//Role" eOpposite="#//Role/rules"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="privileges" lowerBound="1"
         upperBound="-1" eType="#//Privilege"/>
   </eClassifiers>

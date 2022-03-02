@@ -5,6 +5,7 @@
     <semanticResources>NoSQLgraph.genmodel</semanticResources>
     <semanticResources>NoSQLsecurity.ecore</semanticResources>
     <semanticResources>NoSQLsecurity.genmodel</semanticResources>
+    <semanticResources>NoSQLdocument.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_mwjWUJiGEeyhU-rzviJ3Vw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_mzRTIJiGEeyhU-rzviJ3Vw" name="NoSQLgraph" repPath="#_myIqsJiGEeyhU-rzviJ3Vw" changeId="c2503fc8-20af-4e7b-8d37-974e2fea15ff">

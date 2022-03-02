@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="NoSQLdocument" nsURI="https://gsya.esi.uclm.es/NoSQLdocument"
+    nsPrefix="NoSQLdocument">
+  <eClassifiers xsi:type="ecore:EClass" name="Database">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collections" upperBound="-1"
+        eType="#//Collection"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Collection">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ids" lowerBound="1" upperBound="-1"
+        eType="#//Id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
+        eType="#//Field" eOpposite="#//Field/collection"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Id">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fields" lowerBound="1"
+        upperBound="-1" eType="#//SimpleField"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleField" eSuperTypes="#//Field">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataTypes" lowerBound="1"
+        upperBound="-1" eType="#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Field">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraint" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collection" lowerBound="1"
+        eType="#//Collection" eOpposite="#//Collection/fields"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComposedField" eSuperTypes="#//Field">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fields" lowerBound="1"
+        upperBound="-1" eType="#//Field"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataType">
+    <eLiterals name="Int" literal="Int"/>
+    <eLiterals name="Double" value="1" literal="Double"/>
+    <eLiterals name="Bool" value="2" literal="Bool"/>
+    <eLiterals name="Char" value="3" literal="Char"/>
+    <eLiterals name="String" value="4" literal="String"/>
+    <eLiterals name="Date" value="5" literal="Date"/>
+    <eLiterals name="Array" value="6" literal="Array"/>
+    <eLiterals name="Enum" value="7" literal="Enum"/>
+  </eClassifiers>
+</ecore:EPackage>
