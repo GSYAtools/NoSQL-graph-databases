@@ -1,0 +1,9 @@
+CREATE ROLE RoleAdmisionStaff;
+CREATE ROLE RoleDoctor;
+CREATE ROLE RolePatient;
+CREATE USER Jhon;
+GRANT ROLE RoleAdmisionStaff TO Jhon;
+CREATE USER Jorge;
+GRANT ROLE RoleDoctor TO Jorge;
+CREATE USER Antonio;
+GRANT ROLE RolePatient TO Antonio;
