@@ -2,7 +2,7 @@
 
 Design and implementation of security policies for NoSQL databases (documental, graph oriented and columnar).
 
-![](img/overview.png | width=100)
+![](img/overview.png)
 
 A security by design approach is used so that a set of metamodels are defined to specify the security aspects at the system design stage. They have been implemented as ecore metamodels in an Eclipse project.
 
