@@ -2,7 +2,8 @@
 
 Design and implementation of security policies for NoSQL databases (documental, graph oriented and columnar).
 
-![](img/overview.png)
+
+## Metamodels
 
 A security by design approach is used so that a set of metamodels are defined to specify the security aspects at the system design stage. They have been implemented as ecore metamodels in an Eclipse project.
 
@@ -11,6 +12,8 @@ A security by design approach is used so that a set of metamodels are defined to
 - Structure of documental databases
 - Structure of graph oriented databases
 - Structure of columnar databases 
+
+## Transformations 
 
 On the other hand, a model-driven development approach is applied which, starting from these models, allows to automatically obtain the implementation of security policies in specific tools. For each target tool, the necessary scripts (in Python) are provided packaged in a Docker container.
 - Graph-oriented databases
@@ -22,5 +25,5 @@ On the other hand, a model-driven development approach is applied which, startin
     - Cassandra
 
 
-
+![](img/overview.png)
 
