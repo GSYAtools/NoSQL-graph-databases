@@ -1,6 +1,5 @@
 
 import os
-from sqlalchemy import null
 import typer
 import requests
 
@@ -15,8 +14,8 @@ import requests
 
 ## for testing without arguments
 def GraphModelToNeo4J():
-    #database = "NoSQL-Aeropuerto"
-    database = "NoSQL-Hospital"
+    database = "NoSQL-Aeropuerto"
+    #database = "NoSQL-Hospital"
     #database = "NoSQL-RedSocial"
     outputfile = "output.txt"
 
