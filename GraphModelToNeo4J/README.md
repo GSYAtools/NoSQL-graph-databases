@@ -1,6 +1,6 @@
 ## NAME
 
-GraphModel2Neo4J
+GraphModelToNeo4J
 
 ## TAG
 
@@ -11,10 +11,20 @@ Carlos Blanco
 
 ## DATE
 
-02-03-2022
+08-03-2022
 
 ## DESCRIPTION
 Transform a graph-oriented database model into security policies for Neo4J
+
+
+## Run in python
+```
+python.exe .\graph_model_to_neo4j.py --database NoSQL-Hospital --outputfile securityConfiguration.txt
+```
+
+>--database   The name of the database 
+
+>--outputfile   The name of the output file where to write the security policies. It is generated in "data" subfolder
 
 # DOCKER
 
@@ -30,14 +40,8 @@ docker build -t graph_model_to_neo4j -f GraphModelToNeo4J.dockerfile .
 docker run -v $(pwd)/data:/usr/local/src/data/ graph_model_to_neo4j --database "NoSQL-Hospital" --outputfile "securityConfiguration.txt"
 ```
 
-```
-The name of the database
---database "NoSQL-Hospital" 
-The name of the outpunt file where to write the security policies
---outputfile "securityConfiguration.txt"
-```
 
-## Run in windows
+## Run (in windows)
 
 ```
 docker run -v data:/usr/local/src/data/ graph_model_to_neo4j --database "NoSQL-Hospital" --outputfile "securityConfiguration.txt"

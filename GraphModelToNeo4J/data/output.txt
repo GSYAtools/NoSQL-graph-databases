@@ -1,9 +1,0 @@
-CREATE ROLE Admin;
-CREATE ROLE Passenger;
-CREATE ROLE Security;
-CREATE ROLE Staff;
-CREATE ROLE User;
-CREATE USER manuel;
-GRANT ROLE Staff TO manuel;
-CREATE USER juan;
-GRANT ROLE User TO juan;
