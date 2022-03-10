@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:NoSQLgraph="https://gsya.esi.uclm.es/NoSQLgraph" xmlns:NoSQLsecurity="https://gsya.esi.uclm.es/NoSQLsecurity" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://gsya.esi.uclm.es/NoSQLsecurity">
+  <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
+  <xsd:import namespace="https://gsya.esi.uclm.es/NoSQLgraph" schemaLocation="NoSQLgraphXMI.xsd"/>
+  <xsd:simpleType name="SignType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="positive"/>
+      <xsd:enumeration value="negative"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Database">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="roles" type="NoSQLsecurity:Role"/>
+      <xsd:element name="users" type="NoSQLsecurity:User"/>
+      <xsd:element name="rules" type="NoSQLsecurity:SecurityRule"/>
+      <xsd:element name="elements" type="NoSQLgraph:Element"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="roles" type="xsd:string"/>
+    <xsd:attribute name="users" type="xsd:string"/>
+    <xsd:attribute name="rules" type="xsd:string"/>
+    <xsd:attribute name="elements" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="Database" type="NoSQLsecurity:Database"/>
+  <xsd:complexType name="Role">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="children" type="NoSQLsecurity:Role"/>
+      <xsd:element name="root" type="NoSQLsecurity:Role"/>
+      <xsd:element name="rules" type="NoSQLsecurity:SecurityRule"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="children" type="xsd:string"/>
+    <xsd:attribute name="root" type="xsd:string"/>
+    <xsd:attribute name="rules" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="Role" type="NoSQLsecurity:Role"/>
+  <xsd:complexType name="User">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="roles" type="NoSQLsecurity:Role"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="pass" type="xsd:string" use="required"/>
+    <xsd:attribute name="roles" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="User" type="NoSQLsecurity:User"/>
+  <xsd:complexType abstract="true" name="SecurityRule">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="roles" type="NoSQLsecurity:Role"/>
+      <xsd:element name="privileges" type="NoSQLsecurity:Privilege"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="sign" type="NoSQLsecurity:SignType" use="required"/>
+    <xsd:attribute name="roles" type="xsd:string"/>
+    <xsd:attribute name="privileges" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="SecurityRule" type="NoSQLsecurity:SecurityRule"/>
+  <xsd:complexType name="SecurityRuleField">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:SecurityRule">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="fields" type="NoSQLgraph:Field"/>
+        </xsd:choice>
+        <xsd:attribute name="fields" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SecurityRuleField" type="NoSQLsecurity:SecurityRuleField"/>
+  <xsd:complexType name="SecurityRuleElement">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:SecurityRule">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="elements" type="NoSQLgraph:Element"/>
+        </xsd:choice>
+        <xsd:attribute name="elements" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SecurityRuleElement" type="NoSQLsecurity:SecurityRuleElement"/>
+  <xsd:complexType name="Privilege">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="securityAction" type="NoSQLsecurity:SecurityAction"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="condition" type="xsd:string"/>
+    <xsd:attribute name="securityAction" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="Privilege" type="NoSQLsecurity:Privilege"/>
+  <xsd:complexType name="SecurityAction">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="SecurityAction" type="NoSQLsecurity:SecurityAction"/>
+  <xsd:complexType name="HideInstance">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:SecurityAction"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HideInstance" type="NoSQLsecurity:HideInstance"/>
+  <xsd:complexType name="HideValue">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:SecurityAction"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HideValue" type="NoSQLsecurity:HideValue"/>
+  <xsd:complexType name="HideAllValues">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:SecurityAction"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HideAllValues" type="NoSQLsecurity:HideAllValues"/>
+  <xsd:complexType name="HideField">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:SecurityAction"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HideField" type="NoSQLsecurity:HideField"/>
+  <xsd:complexType name="Create">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:Privilege"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Create" type="NoSQLsecurity:Create"/>
+  <xsd:complexType name="Read">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:Privilege"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Read" type="NoSQLsecurity:Read"/>
+  <xsd:complexType name="Update">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:Privilege"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Update" type="NoSQLsecurity:Update"/>
+  <xsd:complexType name="Delete">
+    <xsd:complexContent>
+      <xsd:extension base="NoSQLsecurity:Privilege"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Delete" type="NoSQLsecurity:Delete"/>
+</xsd:schema>
