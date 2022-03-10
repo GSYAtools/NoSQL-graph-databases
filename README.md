@@ -3,7 +3,7 @@
 Design and implementation of security policies for NoSQL databases (documental, graph oriented and columnar).
 
 
-## [Metamodels](metamodels/)
+## [Metamodels](Metamodels/)
 
 In order to apply a security by design approach, a set of metamodels have been defined to specify the security aspects at the NoSQL database design stage for:
 
