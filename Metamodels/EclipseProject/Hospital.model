@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Database xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="graph" xmi:id="_GJfDoKCAEeyoLJDwMu6Ztw" name="Hospital">
+  <elements xsi:type="Node" xmi:id="_aEqYoKCAEeyoLJDwMu6Ztw" name="Doctor">
+    <fields xmi:id="_brP78KCAEeyoLJDwMu6Ztw" name="specialty" dataType="string"/>
+  </elements>
+  <elements xsi:type="Node" xmi:id="_f20kgKCAEeyoLJDwMu6Ztw" name="Disease">
+    <fields xmi:id="_KfRisKCBEeyoLJDwMu6Ztw" name="name" dataType="string"/>
+  </elements>
+  <elements xsi:type="Node" xmi:id="_iG6X0KCAEeyoLJDwMu6Ztw" name="Treatment">
+    <fields xmi:id="_O0U3YKCBEeyoLJDwMu6Ztw" name="name" dataType="string"/>
+  </elements>
+  <elements xsi:type="Node" xmi:id="_j7NnAKCAEeyoLJDwMu6Ztw" name="Patient">
+    <fields xmi:id="_QdcKQKCBEeyoLJDwMu6Ztw" name="name" dataType="string"/>
+    <fields xmi:id="_SLb9IKCBEeyoLJDwMu6Ztw" name="address" dataType="string"/>
+    <fields xmi:id="_Ujc9YKCBEeyoLJDwMu6Ztw" name="dateOfBirth" dataType="date"/>
+    <fields xmi:id="_W6npEKCBEeyoLJDwMu6Ztw" name="gender" dataType="string"/>
+    <fields xmi:id="_agyegKCBEeyoLJDwMu6Ztw" name="ssn" dataType="string"/>
+  </elements>
+  <elements xsi:type="Node" xmi:id="_luPq4KCAEeyoLJDwMu6Ztw" name="AdmissionStaff">
+    <fields xmi:id="_caqKMKCBEeyoLJDwMu6Ztw" name="name" dataType="string"/>
+  </elements>
+  <elements xsi:type="Relationship" xmi:id="_yRD1wKCBEeyoLJDwMu6Ztw" name="diagnosed" from="_aEqYoKCAEeyoLJDwMu6Ztw" to="_f20kgKCAEeyoLJDwMu6Ztw">
+    <fields xmi:id="_15CpEKCBEeyoLJDwMu6Ztw" name="date" dataType="date"/>
+  </elements>
+  <elements xsi:type="Relationship" xmi:id="_4Im38KCBEeyoLJDwMu6Ztw" name="treatment_option" from="_f20kgKCAEeyoLJDwMu6Ztw" to="_iG6X0KCAEeyoLJDwMu6Ztw"/>
+  <elements xsi:type="Relationship" xmi:id="_7VNW0KCBEeyoLJDwMu6Ztw" name="suffers" from="_j7NnAKCAEeyoLJDwMu6Ztw" to="_f20kgKCAEeyoLJDwMu6Ztw"/>
+  <elements xsi:type="Relationship" xmi:id="_-USXEKCBEeyoLJDwMu6Ztw" name="current_treatment" from="_j7NnAKCAEeyoLJDwMu6Ztw" to="_iG6X0KCAEeyoLJDwMu6Ztw"/>
+  <elements xsi:type="Relationship" xmi:id="_BpQHwKCCEeyoLJDwMu6Ztw" name="registers" from="_luPq4KCAEeyoLJDwMu6Ztw" to="_j7NnAKCAEeyoLJDwMu6Ztw"/>
+  <roles xmi:id="_GfVF4KCCEeyoLJDwMu6Ztw" name="RoleAdmissionStaff" rules="_Sb4-gKCCEeyoLJDwMu6Ztw _5S_K8KCCEeyoLJDwMu6Ztw _EeVCAKCDEeyoLJDwMu6Ztw"/>
+  <roles xmi:id="_JDQbMKCCEeyoLJDwMu6Ztw" name="RoleDoctor" rules="_WWLNUKCDEeyoLJDwMu6Ztw _hCgNIKCDEeyoLJDwMu6Ztw _r9n24KCDEeyoLJDwMu6Ztw _2OPyIKCDEeyoLJDwMu6Ztw"/>
+  <roles xmi:id="_KzfCsKCCEeyoLJDwMu6Ztw" name="RolePatient" rules="_O_ghwKCDEeyoLJDwMu6Ztw"/>
+  <rules xsi:type="SecurityRuleElement" xmi:id="_Sb4-gKCCEeyoLJDwMu6Ztw" name="GrantCRUPatientToAdmissionStaff" roles="_GfVF4KCCEeyoLJDwMu6Ztw" elements="_j7NnAKCAEeyoLJDwMu6Ztw">
+    <privileges xsi:type="Create" xmi:id="_AY9IEKCDEeyoLJDwMu6Ztw"/>
+    <privileges xsi:type="Read" xmi:id="_A-e3AKCDEeyoLJDwMu6Ztw"/>
+    <privileges xsi:type="Update" xmi:id="_BjhdwKCDEeyoLJDwMu6Ztw"/>
+  </rules>
+  <rules xsi:type="SecurityRuleElement" xmi:id="_5S_K8KCCEeyoLJDwMu6Ztw" name="GrantCRUregistersToAdmissionStaff" roles="_GfVF4KCCEeyoLJDwMu6Ztw" elements="_BpQHwKCCEeyoLJDwMu6Ztw">
+    <privileges xsi:type="Create" xmi:id="_CJFB4KCDEeyoLJDwMu6Ztw"/>
+    <privileges xsi:type="Read" xmi:id="_Cm4_QKCDEeyoLJDwMu6Ztw"/>
+    <privileges xsi:type="Update" xmi:id="_DQtYUKCDEeyoLJDwMu6Ztw"/>
+  </rules>
+  <rules xsi:type="SecurityRuleElement" xmi:id="_EeVCAKCDEeyoLJDwMu6Ztw" name="GrantRAdmissionStaffToAdmissionStaff" roles="_GfVF4KCCEeyoLJDwMu6Ztw" elements="_luPq4KCAEeyoLJDwMu6Ztw">
+    <privileges xsi:type="Read" xmi:id="_KkwNsKCDEeyoLJDwMu6Ztw"/>
+  </rules>
+  <rules xsi:type="SecurityRuleElement" xmi:id="_O_ghwKCDEeyoLJDwMu6Ztw" name="GrantRDoctorToPatient" roles="_KzfCsKCCEeyoLJDwMu6Ztw" elements="_aEqYoKCAEeyoLJDwMu6Ztw">
+    <privileges xsi:type="Read" xmi:id="_VBLwUKCDEeyoLJDwMu6Ztw"/>
+  </rules>
+  <rules xsi:type="SecurityRuleElement" xmi:id="_WWLNUKCDEeyoLJDwMu6Ztw" name="GrantRNodesToDoctor" roles="_JDQbMKCCEeyoLJDwMu6Ztw" elements="_f20kgKCAEeyoLJDwMu6Ztw _aEqYoKCAEeyoLJDwMu6Ztw _j7NnAKCAEeyoLJDwMu6Ztw _iG6X0KCAEeyoLJDwMu6Ztw">
+    <privileges xsi:type="Read" xmi:id="_fdbFsKCDEeyoLJDwMu6Ztw"/>
+  </rules>
+  <rules xsi:type="SecurityRuleElement" xmi:id="_hCgNIKCDEeyoLJDwMu6Ztw" name="GrantCRUDRelationshipsToDoctor" roles="_JDQbMKCCEeyoLJDwMu6Ztw" elements="_-USXEKCBEeyoLJDwMu6Ztw _yRD1wKCBEeyoLJDwMu6Ztw _7VNW0KCBEeyoLJDwMu6Ztw _4Im38KCBEeyoLJDwMu6Ztw">
+    <privileges xsi:type="Create" xmi:id="_y1u-MKCDEeyoLJDwMu6Ztw"/>
+    <privileges xsi:type="Read" xmi:id="_zvjiIKCDEeyoLJDwMu6Ztw"/>
+    <privileges xsi:type="Update" xmi:id="_0Tn4gKCDEeyoLJDwMu6Ztw"/>
+    <privileges xsi:type="Delete" xmi:id="_042FcKCDEeyoLJDwMu6Ztw"/>
+  </rules>
+  <rules xsi:type="SecurityRuleField" xmi:id="_r9n24KCDEeyoLJDwMu6Ztw" name="DenyRPatientssnToDoctor" roles="_JDQbMKCCEeyoLJDwMu6Ztw" fields="_agyegKCBEeyoLJDwMu6Ztw">
+    <privileges xsi:type="Read" xmi:id="_yIJfcKCDEeyoLJDwMu6Ztw"/>
+  </rules>
+  <rules xsi:type="SecurityRuleField" xmi:id="_2OPyIKCDEeyoLJDwMu6Ztw" name="DenyRPatientaddressToDoctor" roles="_JDQbMKCCEeyoLJDwMu6Ztw" fields="_SLb9IKCBEeyoLJDwMu6Ztw">
+    <privileges xsi:type="Read" xmi:id="__5270KCDEeyoLJDwMu6Ztw" condition="today - Patient.dateOfBirth &lt; 18 years"/>
+  </rules>
+</Database>

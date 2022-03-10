@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="graph" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:nsPrefix="" ecore:package="graph" targetNamespace="graph">
+  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
+  <xsd:element ecore:ignore="true" name="Database" type="Database"/>
+  <xsd:element ecore:ignore="true" name="Element" type="Element"/>
+  <xsd:element ecore:ignore="true" name="Node" type="Node"/>
+  <xsd:element ecore:ignore="true" name="Relationship" type="Relationship"/>
+  <xsd:element ecore:ignore="true" name="Field" type="Field"/>
+  <xsd:element ecore:ignore="true" name="Role" type="Role"/>
+  <xsd:element ecore:ignore="true" name="User" type="User"/>
+  <xsd:element ecore:ignore="true" name="SecurityRule" type="SecurityRule"/>
+  <xsd:element ecore:ignore="true" name="SecurityRuleField" type="SecurityRuleField"/>
+  <xsd:element ecore:ignore="true" name="SecurityRuleElement" type="SecurityRuleElement"/>
+  <xsd:element ecore:ignore="true" name="Privilege" type="Privilege"/>
+  <xsd:element ecore:ignore="true" name="Create" type="Create"/>
+  <xsd:element ecore:ignore="true" name="Read" type="Read"/>
+  <xsd:element ecore:ignore="true" name="Update" type="Update"/>
+  <xsd:element ecore:ignore="true" name="Delete" type="Delete"/>
+  <xsd:element ecore:ignore="true" name="SecurityAction" type="SecurityAction"/>
+  <xsd:element ecore:ignore="true" name="HideInstance" type="HideInstance"/>
+  <xsd:element ecore:ignore="true" name="HideValue" type="HideValue"/>
+  <xsd:element ecore:ignore="true" name="HideAllValues" type="HideAllValues"/>
+  <xsd:element ecore:ignore="true" name="HideField" type="HideField"/>
+  <xsd:complexType name="Database">
+    <xsd:sequence>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="elements" type="Element"/>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="roles" type="Role"/>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="users" type="User"/>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="rules" type="SecurityRule"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="ecore:EString" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="Element">
+    <xsd:sequence>
+      <xsd:element ecore:opposite="element" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="fields" type="Field"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="ecore:EString" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="Node">
+    <xsd:complexContent>
+      <xsd:extension base="Element"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Relationship">
+    <xsd:complexContent>
+      <xsd:extension base="Element">
+        <xsd:attribute ecore:reference=":Node" name="from" type="xsd:anyURI" use="required"/>
+        <xsd:attribute ecore:reference=":Node" name="to" type="xsd:anyURI" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Field">
+    <xsd:attribute name="name" type="ecore:EString" use="required"/>
+    <xsd:attribute ecore:unsettable="false" name="dataType" type="DataType" use="required"/>
+    <xsd:attribute default="true" ecore:unsettable="false" name="isRequired" type="ecore:EBoolean"/>
+    <xsd:attribute default="false" ecore:unsettable="false" name="isIndex" type="ecore:EBoolean"/>
+    <xsd:attribute ecore:opposite="fields" ecore:reference=":Element" name="element" type="xsd:anyURI" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="Role">
+    <xsd:sequence>
+      <xsd:element ecore:opposite="root" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="children" type="Role"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="ecore:EString" use="required"/>
+    <xsd:attribute ecore:opposite="children" ecore:reference=":Role" name="root" type="xsd:anyURI"/>
+    <xsd:attribute ecore:opposite="roles" ecore:reference=":SecurityRule" name="rules">
+      <xsd:simpleType>
+        <xsd:list itemType="xsd:anyURI"/>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="User">
+    <xsd:attribute name="name" type="ecore:EString" use="required"/>
+    <xsd:attribute name="pass" type="ecore:EString" use="required"/>
+    <xsd:attribute ecore:reference=":Role" name="roles">
+      <xsd:simpleType>
+        <xsd:list itemType="xsd:anyURI"/>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="SecurityRule">
+    <xsd:sequence>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" name="privileges" type="Privilege"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="ecore:EString" use="required"/>
+    <xsd:attribute ecore:opposite="rules" ecore:reference=":Role" name="roles" use="required">
+      <xsd:simpleType>
+        <xsd:list itemType="xsd:anyURI"/>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute ecore:unsettable="false" name="sign" type="SignType" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="SecurityRuleField">
+    <xsd:complexContent>
+      <xsd:extension base="SecurityRule">
+        <xsd:attribute ecore:reference=":Field" name="fields" use="required">
+          <xsd:simpleType>
+            <xsd:list itemType="xsd:anyURI"/>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SecurityRuleElement">
+    <xsd:complexContent>
+      <xsd:extension base="SecurityRule">
+        <xsd:attribute ecore:reference=":Element" name="elements" use="required">
+          <xsd:simpleType>
+            <xsd:list itemType="xsd:anyURI"/>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="Privilege">
+    <xsd:attribute name="condition" type="ecore:EString"/>
+    <xsd:attribute ecore:reference=":SecurityAction" name="securityAction" type="xsd:anyURI"/>
+  </xsd:complexType>
+  <xsd:complexType name="Create">
+    <xsd:complexContent>
+      <xsd:extension base="Privilege"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Read">
+    <xsd:complexContent>
+      <xsd:extension base="Privilege"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Update">
+    <xsd:complexContent>
+      <xsd:extension base="Privilege"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Delete">
+    <xsd:complexContent>
+      <xsd:extension base="Privilege"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SecurityAction"/>
+  <xsd:complexType name="HideInstance">
+    <xsd:complexContent>
+      <xsd:extension base="SecurityAction"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="HideValue">
+    <xsd:complexContent>
+      <xsd:extension base="SecurityAction"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="HideAllValues">
+    <xsd:complexContent>
+      <xsd:extension base="SecurityAction"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="HideField">
+    <xsd:complexContent>
+      <xsd:extension base="SecurityAction"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="SignType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="possitive"/>
+      <xsd:enumeration value="negative"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DataType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="int"/>
+      <xsd:enumeration value="double"/>
+      <xsd:enumeration value="bool"/>
+      <xsd:enumeration value="char"/>
+      <xsd:enumeration value="string"/>
+      <xsd:enumeration value="date"/>
+      <xsd:enumeration value="array"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,20 +1,23 @@
 # GSYA-NoSQL
 
-Metamodels for the design of security policies in NoSQL databases. These metamodels are defined in ecore in an Eclipse project.
-- Security policies
-- Structure of documental databases
-- Structure of graph oriented databases
-- Structure of columnar databases 
+Metamodels for the design of security policies in NoSQL databases (graph-oriented, document, columnar). These metamodels are defined in an Eclipse project (as Ecore using Emfatic notation).
 
+Example models, defined according to these metamodels:
 
-## Security policies
+- Hospital (Graph-oriented)
+    
+---
+
+## Metamodels
+
+### Security policies
 
 ![](../img/security.png)
 
-## Graph-oriented databases
+### Graph-oriented databases
 ![](../img/graph.png)
 
-## Document databases
+### Document databases
 ![](../img/document.png)
 
-## Columnar databases
+## Columnar databases#
