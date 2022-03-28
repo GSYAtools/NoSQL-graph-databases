@@ -24,8 +24,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Field">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" lowerBound="1"
-        eType="#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" lowerBound="1"
+        eType="#//DataType" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -51,7 +51,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" lowerBound="1" upperBound="-1"
         eType="#//Role" eOpposite="#//Role/rules"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sign" lowerBound="1" eType="#//SignType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sign" lowerBound="1" eType="#//Sign"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="privileges" lowerBound="1"
         upperBound="-1" eType="#//Privilege" containment="true"/>
   </eClassifiers>
@@ -71,22 +72,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="Read" eSuperTypes="#//Privilege"/>
   <eClassifiers xsi:type="ecore:EClass" name="Update" eSuperTypes="#//Privilege"/>
   <eClassifiers xsi:type="ecore:EClass" name="Delete" eSuperTypes="#//Privilege"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SecurityAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityAction" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="HideInstance" eSuperTypes="#//SecurityAction"/>
   <eClassifiers xsi:type="ecore:EClass" name="HideValue" eSuperTypes="#//SecurityAction"/>
   <eClassifiers xsi:type="ecore:EClass" name="HideAllValues" eSuperTypes="#//SecurityAction"/>
   <eClassifiers xsi:type="ecore:EClass" name="HideField" eSuperTypes="#//SecurityAction"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="SignType">
-    <eLiterals name="possitive"/>
-    <eLiterals name="negative" value="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="DataType">
-    <eLiterals name="int"/>
-    <eLiterals name="double" value="1"/>
-    <eLiterals name="bool" value="2"/>
-    <eLiterals name="char" value="3"/>
-    <eLiterals name="string" value="4"/>
-    <eLiterals name="date" value="5"/>
-    <eLiterals name="array" value="6"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sign" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="possitive" eSuperTypes="#//Sign"/>
+  <eClassifiers xsi:type="ecore:EClass" name="negative" eSuperTypes="#//Sign"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="int" eSuperTypes="#//DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="double" eSuperTypes="#//DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="bool" eSuperTypes="#//DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="char" eSuperTypes="#//DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="string" eSuperTypes="#//DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="date" eSuperTypes="#//DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="array" eSuperTypes="#//DataType"/>
 </ecore:EPackage>

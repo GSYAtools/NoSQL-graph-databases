@@ -1,0 +1,57 @@
+CREATE
+(doctor1:Doctor {name:"Shaun Murphy", specialty:"oncology"}),
+(doctor2:Doctor {name:"Neil Melendez", specialty:"allergy"}),
+(doctor3:Doctor {name:"Jared Kalu", specialty:"dermatology"}),
+
+(patient1:Patient {name:"Agnes S Williams", gender:"female", dateOfBirth:"11/21/1982", address:"4514 Jail Drive, Saul, Kentucky", ssn:"324-70-9992"}),
+(patient2:Patient {name:"John O Just", gender:"male", dateOfBirth:"14/05/1976", address:"3092 Counts Lane, Berea, Kentucky", ssn:"293-14-7512"}),
+(patient3:Patient {name:"Lucius C Robinson", gender:"male", dateOfBirth:"15/06/1978", address:"2108 Riverside Drive, Clarkesville, Georgia", ssn:"404-63-1073"}),
+(patient4:Patient {name:"Virginia R Garcia", gender:"female", dateOfBirth:"21/10/1983", address:"3852 Sugarfoot Lane, Kokomo, Indiana", ssn:"239-03-5505"}),
+
+(as1:AdmissionStaff {name:"Tyler Floyd"}),
+(as2:AdmissionStaff {name:"Ulric Barnett"}),
+
+(dis1:Disease {name:"Alzheimer's"}),
+(dis2:Disease {name:"Cancer"}),
+(dis3:Disease {name:"Asthma"}),
+(dis4:Disease {name:"Diabetes"}),
+(dis5:Disease {name:"Migraine"}),
+
+(t1:Treatment {name:"Enbrel"}),
+(t2:Treatment {name:"Chemotherapy"}),
+(t22:Treatment {name:"Radiation therapy"}),
+(t3:Treatment {name:"Ventolin"}),
+(t4:Treatment {name:"Insulin"}),
+(t5:Treatment {name:"Aspirine"});
+
+
+CREATE 
+(as1)-[:registers]->(patient1),
+(as1)-[:registers]->(patient2),
+(as2)-[:registers]->(patient3),
+(as2)-[:registers]->(patient4),
+
+(patient1)-[:suffers]->(dis1),
+(patient2)-[:suffers]->(dis2),
+(patient3)-[:suffers]->(dis3),
+(patient4)-[:suffers]->(dis4),
+(patient4)-[:suffers]->(dis5),
+
+(doctor1)-[:diagnoses {date:"20/05/2020"}]->(dis1),
+(doctor2)-[:diagnoses {date:"20/05/2020"}]->(dis2),
+(doctor2)-[:diagnoses {date:"20/05/2020"}]->(dis3),
+(doctor3)-[:diagnoses {date:"20/05/2020"}]->(dis4),
+(doctor3)-[:diagnoses {date:"20/05/2020"}]->(dis5),
+
+(dis1)-[:treatmement_option]->(t1),
+(dis2)-[:treatmement_option]->(t2),
+(dis2)-[:treatmement_option]->(t22),
+(dis3)-[:treatmement_option]->(t3),
+(dis4)-[:treatmement_option]->(t4),
+(dis5)-[:treatmement_option]->(t5),
+
+(patient1)-[:current_treatmement]->(t1),
+(patient2)-[:current_treatmement]->(t2),
+(patient3)-[:current_treatmement]->(t3),
+(patient4)-[:current_treatmement]->(t4),
+(patient4)-[:current_treatmement]->(t5); 

@@ -24,7 +24,7 @@ class Relationship extends Element {
 
 class Field {
     attr String[1] name; 
-    attr DataType[1] dataType;
+    val DataType[1] dataType;
     attr boolean[?] isRequired = true;
     attr boolean[?] isIndex = false; 
     ref Element[1] #fields element;
@@ -46,7 +46,7 @@ class User {
 abstract class SecurityRule{
 	attr String[1] name; 
 	ref Role[+] #rules roles;
-	attr SignType[1] sign; 
+	val Sign[1] sign; 
     val Privilege[+] privileges; 
     }
     
@@ -67,11 +67,21 @@ class Read extends Privilege {}
 class Update extends Privilege {}
 class Delete extends Privilege {}
 
-class SecurityAction {}
+abstract class SecurityAction {}
 class HideInstance extends SecurityAction {}
 class HideValue extends SecurityAction {}
 class HideAllValues extends SecurityAction {}
 class HideField extends SecurityAction {}
 
-enum SignType {possitive; negative;}
-enum DataType {int; double; bool; char; string; date; array;}
+abstract class Sign {}
+class possitive extends Sign {}
+class negative extends Sign {}
+
+abstract class DataType {}
+class int extends DataType {}
+class double extends DataType {}
+class bool extends DataType {}
+class char extends DataType {}
+class string extends DataType {}
+class date extends DataType {}
+class array extends DataType {}
