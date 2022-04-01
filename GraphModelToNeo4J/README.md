@@ -22,6 +22,11 @@ Transform a graph-oriented database model into security policies for Neo4J
 python.exe .\graph_model_to_neo4j.py --database NoSQL-Hospital --outputfile securityConfiguration.txt
 ```
 
+```
+python3 graph_model_to_neo4j.py --database NoSQL-Hospital --outputfile securityConfiguration.txt
+```
+
+
 >--database   The name of the database 
 
 >--outputfile   The name of the output file where to write the security policies. It is generated in "data" subfolder
