@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Database xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="graph" xmi:id="_4uB5MLQJEeyHbvL5dnQyYg">
+  <roles xmi:id="_5rXEILQJEeyHbvL5dnQyYg" name="Role">
+    <children xmi:id="_JuuaELQKEeyHbvL5dnQyYg" name="Other Professional">
+      <children xmi:id="_Xs0FkLQKEeyHbvL5dnQyYg" name="Healthcare Researcher"/>
+    </children>
+    <children xmi:id="_L5_XwLQKEeyHbvL5dnQyYg" name="Medical Practitioner">
+      <children xmi:id="_TL0moLQKEeyHbvL5dnQyYg" name="Specialist Practitioner"/>
+      <children xmi:id="_Vw1hELQKEeyHbvL5dnQyYg" name="General Practitioner"/>
+    </children>
+    <children xmi:id="_N2wmcLQKEeyHbvL5dnQyYg" name="Registered Nurse">
+      <children xmi:id="_QNbi4LQKEeyHbvL5dnQyYg" name="Nurse"/>
+      <children xmi:id="_RiAJILQKEeyHbvL5dnQyYg" name="Nurse Manager"/>
+    </children>
+  </roles>
+</Database>
