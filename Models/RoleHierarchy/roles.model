@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Database xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="graph" xmi:id="_4uB5MLQJEeyHbvL5dnQyYg">
+<Database xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="graph" xmi:id="_4uB5MLQJEeyHbvL5dnQyYg" name="rolesExample">
   <roles xmi:id="_5rXEILQJEeyHbvL5dnQyYg" name="Role">
     <children xmi:id="_JuuaELQKEeyHbvL5dnQyYg" name="Other Professional">
       <children xmi:id="_Xs0FkLQKEeyHbvL5dnQyYg" name="Healthcare Researcher"/>
