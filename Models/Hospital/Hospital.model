@@ -47,7 +47,13 @@
   <elements xsi:type="Relationship" xmi:id="_-USXEKCBEeyoLJDwMu6Ztw" name="current_treatment" from="_j7NnAKCAEeyoLJDwMu6Ztw" to="_iG6X0KCAEeyoLJDwMu6Ztw"/>
   <elements xsi:type="Relationship" xmi:id="_BpQHwKCCEeyoLJDwMu6Ztw" name="registers" from="_luPq4KCAEeyoLJDwMu6Ztw" to="_j7NnAKCAEeyoLJDwMu6Ztw"/>
   <roles xmi:id="_GfVF4KCCEeyoLJDwMu6Ztw" name="RoleAdmissionStaff" rules="_Sb4-gKCCEeyoLJDwMu6Ztw _5S_K8KCCEeyoLJDwMu6Ztw _EeVCAKCDEeyoLJDwMu6Ztw"/>
-  <roles xmi:id="_JDQbMKCCEeyoLJDwMu6Ztw" name="RoleDoctor" rules="_WWLNUKCDEeyoLJDwMu6Ztw _hCgNIKCDEeyoLJDwMu6Ztw _r9n24KCDEeyoLJDwMu6Ztw _2OPyIKCDEeyoLJDwMu6Ztw"/>
+  <roles xmi:id="_JDQbMKCCEeyoLJDwMu6Ztw" name="RoleDoctor" rules="_WWLNUKCDEeyoLJDwMu6Ztw _hCgNIKCDEeyoLJDwMu6Ztw _r9n24KCDEeyoLJDwMu6Ztw _2OPyIKCDEeyoLJDwMu6Ztw">
+    <children xmi:id="_NV-agLQ_EeyElIZmu_308A" name="RoleDoctorOncology"/>
+    <children xmi:id="_VhbZALQ_EeyElIZmu_308A" name="RoleDoctorNeurology"/>
+    <children xmi:id="_YRfs4LQ_EeyElIZmu_308A" name="RoleDoctorRadiology">
+      <children xmi:id="_osh78LQ_EeyElIZmu_308A" name="RoleDoctorRadiologyCritical"/>
+    </children>
+  </roles>
   <roles xmi:id="_KzfCsKCCEeyoLJDwMu6Ztw" name="RolePatient" rules="_O_ghwKCDEeyoLJDwMu6Ztw"/>
   <users xmi:id="_lhzMkK5xEeyeEdTcGDPhZw" name="admissionEda" pass="pass" roles="_GfVF4KCCEeyoLJDwMu6Ztw"/>
   <users xmi:id="_--WC8K5yEeyeEdTcGDPhZw" name="patientAgnes" pass="pass" roles="_KzfCsKCCEeyoLJDwMu6Ztw"/>
